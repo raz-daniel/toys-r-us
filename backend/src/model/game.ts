@@ -13,7 +13,7 @@ export default class Game extends Model {
     id: string
 
     @AllowNull(false)
-    @Column
+    @Column(DataType.STRING(40))
     name: string
 
     @ForeignKey(() => Audience)

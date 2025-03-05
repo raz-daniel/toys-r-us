@@ -5,8 +5,8 @@ import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
 import cors from 'cors'
-import genresRouter from "./routers/genresRouter"
-import booksRouter from "./routers/booksRouter"
+import audiencesRouter from "./routers/audiencesRouter"
+import gamesRouter from "./routers/gamesRouter"
 
 const port = config.get<string>('app.port')
 const name = config.get<string>('app.name')
@@ -25,8 +25,8 @@ const app = express();
     
         app.use(json())
 
-        // app.use('/genres', genresRouter)
-        // app.use('/books', booksRouter)
+        app.use('/audiences', audiencesRouter)
+        app.use('/games', gamesRouter)
 
     
         app.use(notFound)
