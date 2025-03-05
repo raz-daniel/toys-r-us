@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Mar 04, 2025 at 08:34 PM
+-- Generation Time: Mar 05, 2025 at 09:03 AM
 -- Server version: 9.2.0
 -- PHP Version: 8.2.27
 
@@ -18,97 +18,91 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `steimatzky`
+-- Database: `toysRus`
 --
-CREATE DATABASE IF NOT EXISTS `steimatzky` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `steimatzky`;
+CREATE DATABASE IF NOT EXISTS `toysRus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `toysRus`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Table structure for table `audiences`
 --
 
-CREATE TABLE `books` (
+CREATE TABLE `audiences` (
   `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `genre_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `summary` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `audiences`
+--
+
+INSERT INTO `audiences` (`id`, `name`, `created_at`, `updated_at`) VALUES
+('30860f44-f9a0-11ef-b364-0242ac110002', 'Babies', '2025-03-05 08:59:47', '2025-03-05 08:59:47'),
+('30880f69-f9a0-11ef-b364-0242ac110002', 'Children', '2025-03-05 08:59:47', '2025-03-05 08:59:47'),
+('30885006-f9a0-11ef-b364-0242ac110002', 'Teens', '2025-03-05 08:59:47', '2025-03-05 08:59:47'),
+('30886e92-f9a0-11ef-b364-0242ac110002', 'Adults', '2025-03-05 08:59:47', '2025-03-05 08:59:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `games`
+--
+
+CREATE TABLE `games` (
+  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `audience_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `stock` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `books`
+-- Dumping data for table `games`
 --
 
-INSERT INTO `books` (`id`, `name`, `genre_id`, `summary`, `price`, `stock`, `created_at`, `updated_at`) VALUES
-('01c3b577-f938-11ef-8d52-0242ac110002', 'The Great Gatsby', 'b579d86a-f937-11ef-8d52-0242ac110002', 'A novel about the American Dream set in the Roaring Twenties.', 12.99, 25, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c40078-f938-11ef-8d52-0242ac110002', 'To Kill a Mockingbird', 'b579d86a-f937-11ef-8d52-0242ac110002', 'A story about racial injustice and moral growth in the American South.', 14.50, 30, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c40372-f938-11ef-8d52-0242ac110002', 'Pride and Prejudice', 'b579d86a-f937-11ef-8d52-0242ac110002', 'A romantic novel about the relationships between the Bennet sisters and their suitors.', 11.99, 20, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c40422-f938-11ef-8d52-0242ac110002', '1984', 'b579d86a-f937-11ef-8d52-0242ac110002', 'A dystopian novel about totalitarianism, surveillance, and loss of individual identity.', 13.75, 15, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c4047e-f938-11ef-8d52-0242ac110002', 'The Catcher in the Rye', 'b579d86a-f937-11ef-8d52-0242ac110002', 'A story of teenage alienation and identity crisis by J.D. Salinger.', 10.50, 18, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c720c6-f938-11ef-8d52-0242ac110002', 'Sapiens: A Brief History of Humankind', 'b57b6a64-f937-11ef-8d52-0242ac110002', 'An exploration of the history of Homo sapiens from prehistory to the present.', 18.99, 22, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c7291a-f938-11ef-8d52-0242ac110002', 'Atomic Habits', 'b57b6a64-f937-11ef-8d52-0242ac110002', 'A guide to building good habits and breaking bad ones through small changes.', 15.99, 35, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c72af6-f938-11ef-8d52-0242ac110002', 'Educated', 'b57b6a64-f937-11ef-8d52-0242ac110002', 'A memoir about a woman who leaves her survivalist family and goes on to earn a PhD.', 14.75, 19, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c72ba5-f938-11ef-8d52-0242ac110002', 'The Immortal Life of Henrietta Lacks', 'b57b6a64-f937-11ef-8d52-0242ac110002', 'The story of a woman whose cells became one of the most important tools in medicine.', 16.50, 12, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c72bff-f938-11ef-8d52-0242ac110002', 'Thinking, Fast and Slow', 'b57b6a64-f937-11ef-8d52-0242ac110002', 'An exploration of the two systems that drive the way we think and make decisions.', 17.99, 16, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c99a4e-f938-11ef-8d52-0242ac110002', 'Dune', 'b57b893c-f937-11ef-8d52-0242ac110002', 'An epic science fiction novel about politics, religion, and ecology on a desert planet.', 16.99, 28, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c9ab28-f938-11ef-8d52-0242ac110002', 'The Hitchhiker\'s Guide to the Galaxy', 'b57b893c-f937-11ef-8d52-0242ac110002', 'A comedic science fiction series following the adventures of Arthur Dent.', 12.99, 23, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c9abe7-f938-11ef-8d52-0242ac110002', 'Neuromancer', 'b57b893c-f937-11ef-8d52-0242ac110002', 'A groundbreaking cyberpunk novel about hackers and artificial intelligence.', 13.50, 17, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c9ac41-f938-11ef-8d52-0242ac110002', 'The Three-Body Problem', 'b57b893c-f937-11ef-8d52-0242ac110002', 'A hard science fiction novel about humanity\'s first contact with an alien civilization.', 15.75, 14, '2025-03-04 20:34:01', '2025-03-04 20:34:01'),
-('01c9ac95-f938-11ef-8d52-0242ac110002', 'Foundation', 'b57b893c-f937-11ef-8d52-0242ac110002', 'A science fiction series chronicling the fall and rebirth of a galactic empire.', 14.25, 20, '2025-03-04 20:34:01', '2025-03-04 20:34:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `genres`
---
-
-CREATE TABLE `genres` (
-  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `genres`
---
-
-INSERT INTO `genres` (`id`, `name`, `created_at`, `updated_at`) VALUES
-('b579d86a-f937-11ef-8d52-0242ac110002', 'Fiction', '2025-03-04 20:31:53', '2025-03-04 20:31:53'),
-('b57b6a64-f937-11ef-8d52-0242ac110002', 'Non-Fiction', '2025-03-04 20:31:53', '2025-03-04 20:31:53'),
-('b57b893c-f937-11ef-8d52-0242ac110002', 'Science Fiction', '2025-03-04 20:31:53', '2025-03-04 20:31:53');
+INSERT INTO `games` (`id`, `name`, `audience_id`, `description`, `price`, `created_at`, `updated_at`) VALUES
+('8ecb044b-f9a0-11ef-b364-0242ac110002', 'Soft Blocks', '30860f44-f9a0-11ef-b364-0242ac110002', 'Colorful soft blocks for babies', 19.99, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb5121-f9a0-11ef-b364-0242ac110002', 'Baby Rattle', '30860f44-f9a0-11ef-b364-0242ac110002', 'Musical rattle toy', 12.50, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb5528-f9a0-11ef-b364-0242ac110002', 'Teething Rings', '30860f44-f9a0-11ef-b364-0242ac110002', 'Set of cooling teething rings', 15.75, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb55f8-f9a0-11ef-b364-0242ac110002', 'LEGO Set', '30880f69-f9a0-11ef-b364-0242ac110002', 'Building blocks set', 49.99, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb5767-f9a0-11ef-b364-0242ac110002', 'Puzzle Game', '30880f69-f9a0-11ef-b364-0242ac110002', '100-piece puzzle', 24.99, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb57e7-f9a0-11ef-b364-0242ac110002', 'Board Game', '30880f69-f9a0-11ef-b364-0242ac110002', 'Family board game', 29.50, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb5840-f9a0-11ef-b364-0242ac110002', 'Strategy Game', '30885006-f9a0-11ef-b364-0242ac110002', 'Complex strategy board game', 39.99, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb5898-f9a0-11ef-b364-0242ac110002', 'Card Game', '30885006-f9a0-11ef-b364-0242ac110002', 'Collectible card game', 19.95, '2025-03-05 09:02:25', '2025-03-05 09:02:25'),
+('8ecb58f3-f9a0-11ef-b364-0242ac110002', 'Electronic Game', '30885006-f9a0-11ef-b364-0242ac110002', 'Handheld electronic game', 59.99, '2025-03-05 09:02:25', '2025-03-05 09:02:25');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `books`
+-- Indexes for table `audiences`
 --
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `genre_id` (`genre_id`);
+ALTER TABLE `audiences`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `genres`
+-- Indexes for table `games`
 --
-ALTER TABLE `genres`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `audience_id` (`audience_id`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `books`
+-- Constraints for table `games`
 --
-ALTER TABLE `books`
-  ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `games`
+  ADD CONSTRAINT `games_ibfk_1` FOREIGN KEY (`audience_id`) REFERENCES `audiences` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

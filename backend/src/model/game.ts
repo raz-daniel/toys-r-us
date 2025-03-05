@@ -1,13 +1,11 @@
 import { AllowNull, BelongsTo, Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
-import Genre from "./genre";
-
-
+import Audience from "./audience";
 
 @Table({
     underscored: true
 })
 
-export default class Book extends Model {
+export default class Game extends Model {
 
     @PrimaryKey
     @Default(DataType.UUIDV4)
@@ -18,23 +16,19 @@ export default class Book extends Model {
     @Column
     name: string
 
-    @ForeignKey(() => Genre)
+    @ForeignKey(() => Audience)
     @Column(DataType.UUID)
-    genreId: string
+    audienceId: string
 
     @AllowNull(false)
     @Column
-    summary: string
+    description: string
 
     @AllowNull(false)
     @Column(DataType.DECIMAL(10,2))
     price: number
-
-    @AllowNull(false)
-    @Column(DataType.INTEGER)
-    stock: number
     
-    @BelongsTo(() => Genre)
-    genre: Genre
+    @BelongsTo(() => Audience)
+    audience: Audience
 
 }

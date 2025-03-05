@@ -25,8 +25,8 @@ const app = express();
     
         app.use(json())
 
-        app.use('/genres', genresRouter)
-        app.use('/books', booksRouter)
+        // app.use('/genres', genresRouter)
+        // app.use('/books', booksRouter)
 
     
         app.use(notFound)
