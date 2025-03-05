@@ -22,8 +22,8 @@ const app = express();
         console.log('Database logged in successfully')
 
         app.use(cors())
-    
         app.use(json())
+
 
         app.use('/audiences', audiencesRouter)
         app.use('/games', gamesRouter)

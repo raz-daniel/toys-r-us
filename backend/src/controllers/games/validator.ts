@@ -14,3 +14,7 @@ export const getGamesPerAudienceValidator = Joi.object({
 export const deleteGameValidator = Joi.object({
     id: Joi.string().uuid().required()
 })
+
+export const getGamesPerPriceValidator = Joi.object({
+    maxGamePrice: Joi.number().min(0).required()
+})

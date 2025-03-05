@@ -1,7 +1,6 @@
 export default interface Draft {
     name: string
-    summary: string
+    description: string
     price: number
-    stock: number
-    genreId: string
+    audienceId: string
 }

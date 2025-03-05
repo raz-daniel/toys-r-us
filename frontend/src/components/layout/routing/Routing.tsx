@@ -11,8 +11,8 @@ export default function Routing(): JSX.Element {
         <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/books/list" element={<List />} />
-            <Route path="/books/add" element={<Add />} />
+            <Route path="/games/list" element={<List />} />
+            <Route path="/games/add" element={<Add />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )

@@ -1,7 +1,7 @@
 import { NextFunction, Response, Request } from "express";
 import Game from "../../model/game";
 import Audience from "../../model/audience";
-import { literal } from "sequelize";
+import { literal, Op } from "sequelize";
 
 
 
@@ -9,7 +9,7 @@ export async function getGamesPerAudience(req: Request<{ audienceId: string }>, 
     try {
         const { audienceId } = req.params
         const games = await Game.findAll({
-            where: {audienceId},
+            where: { audienceId },
             include: [Audience]
         })
         res.json(games)
@@ -18,11 +18,15 @@ export async function getGamesPerAudience(req: Request<{ audienceId: string }>, 
     }
 }
 
-export async function getGamesPerPrice(req: Request<{}, {}, {maxGamePrice: number}>, res: Response, next: NextFunction) {
+export async function getGamesPerPrice(req: Request, res: Response, next: NextFunction) {
     try {
-        const { maxGamePrice } = req.body
-        const games = await Game.findAll( {
-            where: literal(`price <= ${maxGamePrice}`),
+        const { maxGamePrice } = req.query
+        const games = await Game.findAll({
+            where: {
+                price: {
+                    [Op.lte]: maxGamePrice
+                }
+            },
             include: [Audience]
         })
         res.json(games)
@@ -47,9 +51,9 @@ export async function addGame(req: Request<{}, {}, {
 
 export async function removeGame(req: Request<{ id: string }>, res: Response, next: NextFunction) {
     try {
-        const {id} = req.params
-        await Game.destroy({where: {id}})
-        res.json({success: true})
+        const { id } = req.params
+        await Game.destroy({ where: { id } })
+        res.json({ success: true })
     } catch (error) {
         next(error)
     }

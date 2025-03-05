@@ -9,7 +9,7 @@ export default function Header(): JSX.Element {
 
     function handleSearch() {
         if (searchTerm.trim()) {
-            navigate(`/books/list?search=${searchTerm}`)
+            navigate(`/games/list?search=${searchTerm}`)
         }
     }
 
@@ -18,8 +18,8 @@ export default function Header(): JSX.Element {
 
             <div>
                 <nav>
-                    <NavLink to="books/list">Books</NavLink>
-                    <NavLink to="books/add">Add Book</NavLink>
+                    <NavLink to="games/list">Games</NavLink>
+                    <NavLink to="games/add">Add Game</NavLink>
                     <NavLink to="/home">Home</NavLink>
                 </nav>
             </div>
