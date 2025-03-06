@@ -1,32 +1,109 @@
 .Add {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+}
+
+.Add h2 {
+  text-align: center;
+  color: #FF5757;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.Add form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Add input, 
+.Add select {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: inherit;
+}
+
+.Add input:focus, 
+.Add select:focus {
+  outline: none;
+  border-color: #4BB4FF;
+  box-shadow: 0 0 0 3px rgba(75, 180, 255, 0.2);
+}
+
+.Add select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.Add span.error {
+  color: #FF5757;
+  font-size: 0.85rem;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  min-height: 18px;
+}
+
+.Add button {
+  background-color: #FF5757;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(255, 87, 87, 0.3);
+  font-family: inherit;
+}
+
+.Add button:hover {
+  background-color: #ff3c3c;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 87, 87, 0.4);
+}
+
+.Add button:active {
+  transform: translateY(0);
+}
+
+/* Fun animations and accents */
+.Add::before {
+  content: "🎮";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 2rem;
+  transform: rotate(-15deg);
+}
+
+.Add::after {
+  content: "🧩";
+  position: absolute;
+  bottom: -15px;
+  right: 20px;
+  font-size: 2rem;
+  transform: rotate(15deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Add {
+    margin: 20px;
+    padding: 20px;
   }
-  
-  .Add form {
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .Add form button {
-    margin-top: 10px;
-    background-color: var(--success-color);
-    color: var(--dark-color);
-    font-weight: bold;
-  }
-  
-  .Add form button:hover {
-    background-color: #3da8c9;
-  }
-  
-  .error {
-    color: var(--error-color);
-    font-size: 0.85rem;
-    margin-top: -10px;
-    margin-bottom: -5px;
-  }
+}

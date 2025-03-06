@@ -3,7 +3,16 @@ import Game from "../../model/game";
 import Audience from "../../model/audience";
 import { literal, Op } from "sequelize";
 
-
+export async function getAllGames(req: Request, res: Response, next: NextFunction) {
+    try {
+        const games = await Game.findAll({
+            include: Audience
+        })
+        res.json(games)
+    } catch (error) {
+        next(error)
+    }
+}
 
 export async function getGamesPerAudience(req: Request<{ audienceId: string }>, res: Response, next: NextFunction) {
     try {

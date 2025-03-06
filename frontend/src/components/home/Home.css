@@ -1,94 +1,206 @@
-/* Home.css */
 .Home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+  color: #333;
 }
 
+/* Banner Section */
 .Home-banner {
-  background: linear-gradient(135deg, #1a3c6e 0%, #2c5ba2 100%);
-  color: white;
-  border-radius: var(--border-radius);
-  padding: 40px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
   margin-bottom: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.Home-banner img {
   width: 100%;
-  max-width: 900px;
-  box-shadow: var(--box-shadow);
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.7);
 }
 
 .Home-banner h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 4rem;
+  text-shadow: 3px 3px 0 #FF5757, 6px 6px 0 #4BB4FF;
+  margin: 0;
+  letter-spacing: 2px;
 }
 
 .Home-banner p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.5rem;
+  text-align:center;
+  max-width: 80%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background-color: rgba(70, 130, 255, 0.6);
+  padding: 15px 25px;
+  border-radius: 15px;
 }
 
+/* Features Section */
 .Home-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  width: 100%;
-  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
 }
 
 .Home-feature {
-  background-color: white;
-  border-radius: var(--border-radius);
+  flex: 1;
+  background: linear-gradient(135deg, #ffecf5 0%, #e7f6ff 100%);
   padding: 25px;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .Home-feature:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
 .Home-feature-icon {
-  font-size: 2rem;
-  color: #1a3c6e;
+  font-size: 3rem;
   margin-bottom: 15px;
 }
 
 .Home-feature h3 {
-  color: #1a3c6e;
-  margin-bottom: 10px;
+  color: #FF5757;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
-.Home-cta {
-  margin-top: 40px;
+.Home-feature p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Benefits Section */
+.Home-benefits {
+  background-color: #f8faff;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.Home-benefits h2 {
+  text-align: center;
+  color: #4BB4FF;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.Home-benefits-container {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.Home-cta a {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #1a3c6e;
-  color: white;
+.Home-benefit {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s;
+}
+
+.Home-benefit:hover {
+  transform: translateX(10px);
+}
+
+.Home-benefit span {
+  font-size: 1.5rem;
+  color: #2EB62C;
+}
+
+.Home-benefit p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* CTA Section */
+.Home-cta {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0 20px;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.Home-cta a.secondary-btn {
+.primary-btn {
+  background-color: #FF5757;
+  color: white;
+  border: 3px solid #FF5757;
+}
+
+.secondary-btn {
   background-color: white;
-  color: #1a3c6e;
-  border: 2px solid #1a3c6e;
+  color: #4BB4FF;
+  border: 3px solid #4BB4FF;
 }
 
-.Home-cta a:hover {
-  background-color: #2c5ba2;
-  transform: translateY(-2px);
+.primary-btn:hover {
+  background-color: #ff3c3c;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 87, 87, 0.3);
 }
 
-.Home-cta a.secondary-btn:hover {
-  background-color: #f0f5ff;
+.secondary-btn:hover {
+  background-color: #4BB4FF;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(75, 180, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Home-features {
+    flex-direction: column;
+  }
+  
+  .Home-banner h1 {
+    font-size: 3rem;
+  }
+  
+  .Home-banner p {
+    font-size: 1.2rem;
+  }
+  
+  .Home-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primary-btn, .secondary-btn {
+    width: 80%;
+  }
 }

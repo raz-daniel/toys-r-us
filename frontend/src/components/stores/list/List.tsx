@@ -5,23 +5,34 @@ import Audience from '../../../models/audience/Audience'
 import audiencesServices from '../../../services/audiences'
 import Game from '../../../models/game/Game'
 import gamesServices from '../../../services/games'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 
 export default function List(): JSX.Element {
 
     const [audiences, setAudiences] = useState<Audience[]>([])
     const [games, setGames] = useState<Game[]>([])
-    const [priceSearch, setPriceSearch] = useState<number>()
+    const [priceSearch, setPriceSearch] = useState<number>(0)
+    const [searchParams] = useSearchParams('');
 
     const location = useLocation()
     const { selectedAudienceId } = location.state || {};
+    const searchTerm = searchParams.get('search') || (location.state?.searchTerm || '');
 
     useEffect(() => {
         (async () => {
             try {
+                console.log("Selected audience ID:", selectedAudienceId);
                 const audiences = await audiencesServices.getAudiences()
                 setAudiences(audiences)
+
+                if (searchTerm) {
+                    const allGames = await gamesServices.getAllGames()
+                    setGames(allGames.filter(game =>
+                        game.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        game.description.toLowerCase().includes(searchTerm.toLowerCase())))
+                    return
+                }
 
                 if (selectedAudienceId) {
                     const gamesFromForm = await gamesServices.getGamesPerAudience(selectedAudienceId)
@@ -29,10 +40,10 @@ export default function List(): JSX.Element {
                 }
 
             } catch (error) {
-                alert(error)
+                alert(`useEffect List Component Error: ${error}`)
             }
         })()
-    }, [selectedAudienceId])
+    }, [selectedAudienceId, searchTerm])
 
     async function audienceChanged(event: ChangeEvent<HTMLSelectElement>) {
         try {
@@ -52,6 +63,7 @@ export default function List(): JSX.Element {
 
     async function handleGamesPerPriceSearch() {
         try {
+            console.log("Searching for price:", priceSearch);
             const gamesPerPrice = await gamesServices.getGamesPerPrice(Number(priceSearch))
             setGames(gamesPerPrice)
         } catch (error) {

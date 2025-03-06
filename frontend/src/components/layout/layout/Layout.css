@@ -1,27 +1,83 @@
 .Layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9ff;
+  background-image: 
+    radial-gradient(#FF5757 2px, transparent 2px),
+    radial-gradient(#4BB4FF 2px, transparent 2px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-opacity: 0.1;
+  position: relative;
+}
+
+.Layout header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.Layout main {
+  flex: 1;
+  padding: 20px;
+}
+
+.Layout footer {
+  margin-top: auto;
+}
+
+/* Apply a subtle toy-themed animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
   }
-  
-  .Layout header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  50% {
+    transform: translateY(-8px);
   }
-  
-  .Layout main {
-    flex: 1;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+  100% {
+    transform: translateY(0px);
   }
-  
-  .Layout footer {
-    background-color: var(--dark-color);
-    color: white;
-    padding: 15px;
-    text-align: center;
-    margin-top: auto;
+}
+
+/* After page load blur-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.Layout {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Bubblegum Sans', Arial, sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4BB4FF;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a9fe8;
+}

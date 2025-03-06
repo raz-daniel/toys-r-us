@@ -1,39 +1,74 @@
-/* NotFound.css */
 .NotFound {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .NotFound h1 {
-    font-size: 8rem;
-    color: var(--accent-color);
-    margin: 0;
-    line-height: 1;
-  }
-  
-  .NotFound p {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    color: var(--dark-color);
-  }
-  
-  .NotFound .back-link {
-    margin-top: 30px;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-  }
-  
-  .NotFound .back-link:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+}
+
+.NotFound h1 {
+  font-size: 8rem;
+  margin: 0;
+  color: #FF5757;
+  text-shadow: 3px 3px 0 #4BB4FF;
+  animation: float 3s ease-in-out infinite;
+}
+
+.NotFound p {
+  font-size: 1.5rem;
+  margin: 20px 0 30px;
+  color: #555;
+}
+
+.NotFound .back-link {
+  display: inline-block;
+  background-color: #4BB4FF;
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(75, 180, 255, 0.3);
+}
+
+.NotFound .back-link:hover {
+  background-color: #3a9fe8;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(75, 180, 255, 0.4);
+}
+
+/* Broken toy animation */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+/* Add some toy pieces in the background */
+.NotFound::before,
+.NotFound::after {
+  content: "🧩";
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.NotFound::before {
+  top: 20%;
+  left: 20%;
+  transform: rotate(-15deg);
+  animation: float 4s ease-in-out infinite 1s;
+}
+
+.NotFound::after {
+  bottom: 20%;
+  right: 20%;
+  transform: rotate(15deg);
+  animation: float 4s ease-in-out infinite 0.5s;
+}

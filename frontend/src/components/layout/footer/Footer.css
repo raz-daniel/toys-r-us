@@ -1,0 +1,45 @@
+.Footer {
+    background: linear-gradient(135deg, #E7F6FF 0%, #FFE8F0 100%);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+    font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+    position: relative;
+  }
+  
+  .Footer p {
+    color: #555;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* Fun toy-themed decorations */
+  .Footer::before,
+  .Footer::after {
+    content: "🧸";
+    position: absolute;
+    font-size: 1.5rem;
+  }
+  
+  .Footer::before {
+    left: 30px;
+    top: 15px;
+    transform: rotate(-10deg);
+  }
+  
+  .Footer::after {
+    right: 30px;
+    top: 15px;
+    transform: rotate(10deg);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .Footer::before,
+    .Footer::after {
+      display: none;
+    }
+  }

@@ -70,12 +70,12 @@ export default function Add(): JSX.Element {
                         message: 'must choose audience'
                     }
                 })}>
-                    <option value="" disabled selected>Please select audience...</option>
+                    <option value="" disabled>Please select audience...</option>
                     {audiences.map(({ id, name }) => <option key={id} value={id}>{name}</option>)}
                 </select>
                 <span className='error'>{formState.errors.audienceId?.message}</span>
 
-                <input placeholder='price' {...register('price', {
+                <input type="number" placeholder='price' {...register('price', {
                     required: {
                         value: true,
                         message: 'must enter price'
